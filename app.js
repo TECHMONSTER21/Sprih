@@ -7,10 +7,17 @@ $(document).ready(function () {
 
     // Add nodes and edges to the DataSet
     data.forEach(function (employee) {
+      const title = `<div class="node-label">
+       <div class="node-name">${employee.firstName} ${employee.lastName}</div>
+        <div class="node-details">${employee.designation}</div>
+        <div class="node-details">Email: ${employee.email}</div>
+        <div class="node-details">Tel: ${employee.contactNumber}</div>
+        <div class="node-details">Address: ${employee.address}</div>
+        </div>`;
       nodes.add({
         id: employee.id,
         label: employee.firstName + ' ' + employee.lastName,
-        title: employee.designation,
+        title: title,
         image: employee.imageUrl
       });
 
@@ -46,8 +53,14 @@ $(document).ready(function () {
         }
       }
     };
-
     // Create a network
     const network = new vis.Network(container, {nodes: nodes, edges: edges}, options);
   });
 });
+
+  // Load CSS file dynamically
+  const cssLink = document.createElement("link");
+  cssLink.href = "main.css"; // Adjust the path to your CSS file
+  cssLink.rel = "stylesheet";
+  cssLink.type = "text/css";
+  document.head.appendChild(cssLink);
