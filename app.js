@@ -16,7 +16,7 @@ $(document).ready(function () {
         </div>`;
       nodes.add({
         id: employee.id,
-        label: employee.firstName + ' ' + employee.lastName,
+        label: employee.firstName + ' ' + employee.lastName + ( + employee.designation + ), 
         title: title,
         image: employee.imageUrl
       });
